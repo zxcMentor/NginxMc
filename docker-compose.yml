@@ -12,6 +12,12 @@ services:
       - "1313:1313"
     networks:
       - mylos
+  nginx:
+    image: nginx
+    ports:
+      - "8080:8080"
+    networks:
+      - mylos
 networks:
   mylos:
     external: true
