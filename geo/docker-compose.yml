@@ -11,7 +11,11 @@ services:
       - geo3
     ports:
       - "8081:8081"
-
+    networks:
+      - mylos
+  geo:
+    build: .
+    container_name: geong
     networks:
       - mylos
   geo1:
