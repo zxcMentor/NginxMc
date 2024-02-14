@@ -9,8 +9,6 @@ services:
       - geo1
       - geo2
       - geo3
-    ports:
-      - "8081:8081"
     networks:
       - mylos
   geo:

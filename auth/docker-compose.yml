@@ -9,8 +9,6 @@ services:
       - auth1
       - auth2
       - auth3
-    ports:
-      - "8082:8082"
     networks:
       - mylos
   auth1:
