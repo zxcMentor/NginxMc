@@ -5,10 +5,6 @@ services:
     image: nginx
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - user1
-      - user2
-      - user3
     networks:
       - mylos
   user:
@@ -16,21 +12,9 @@ services:
     container_name: userng
     networks:
       - mylos
-  user1:
-    build: .
-    container_name: user1ng
-    networks:
-      - mylos
-  user2:
-    build: .
-    container_name: user2ng
-    networks:
-      - mylos
-  user3:
-    build: .
-    container_name: user3ng
-    networks:
-      - mylos
+    deploy:
+      mode: replicated
+      replicas: 3
   db:
     image: postgres
     environment:

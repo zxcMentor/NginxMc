@@ -5,32 +5,15 @@ services:
     image: nginx
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - geo1
-      - geo2
-      - geo3
     networks:
       - mylos
   geo:
     build: .
-    container_name: geong
     networks:
       - mylos
-  geo1:
-    build: .
-    container_name: geo1ng
-    networks:
-      - mylos
-  geo2:
-    build: .
-    container_name: geo2ng
-    networks:
-      - mylos
-  geo3:
-    build: .
-    container_name: geo3ng
-    networks:
-      - mylos
+    deploy:
+      mode: replicated
+      replicas: 3
   redis:
     image: redis
     networks:

@@ -5,32 +5,16 @@ services:
     image: nginx
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    depends_on:
-      - auth1
-      - auth2
-      - auth3
     networks:
       - mylos
   auth:
     build: .
-    container_name: authng
     networks:
       - mylos
-  auth1:
-    build: .
-    container_name: auth1ng
-    networks:
-      - mylos
-  auth2:
-    build: .
-    container_name: auth2ng
-    networks:
-      - mylos
-  auth3:
-    build: .
-    container_name: auth3ng
-    networks:
-      - mylos
+    deploy:
+      mode: replicated
+      replicas: 3
+
 networks:
   mylos:
     external: true
