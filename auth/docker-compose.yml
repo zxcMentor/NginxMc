@@ -11,6 +11,11 @@ services:
       - auth3
     networks:
       - mylos
+  auth:
+    build: .
+    container_name: authng
+    networks:
+      - mylos
   auth1:
     build: .
     container_name: auth1ng
